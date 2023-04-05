@@ -1,10 +1,15 @@
 package math;
 
+import java.util.function.DoubleBinaryOperator;
+
 public class Series {
-    public static double decomposeToSeries(double x, int n, Decomposable d) {
+    public static final DoubleBinaryOperator sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) / Series.getFactorial((int) (2 * n + 1));
+    public static final DoubleBinaryOperator lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
+
+    public static double decomposeToSeries(double x, int n, DoubleBinaryOperator d) {
         double sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += d.calculateStep(x, i);
+            sum += d.applyAsDouble(x, i);
         }
         return sum;
     }

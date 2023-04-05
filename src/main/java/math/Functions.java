@@ -1,11 +1,8 @@
 package math;
 
 public class Functions {
-    private static final Decomposable sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) / Series.getFactorial(2 * n + 1);
-    private static final Decomposable lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
-
     public static double sin(double x) {
-        return Series.decomposeToSeries(x, 100, sinSeries);
+        return Series.decomposeToSeries(x, 100, Series.sinSeries);
     }
 
     public static double cos(double x) {
@@ -21,7 +18,7 @@ public class Functions {
     }
 
     public static double ln(double x) {
-        return Series.decomposeToSeries(x, 100, lnSeries);
+        return Series.decomposeToSeries(x, 100, Series.lnSeries);
     }
 
     public static double log3(double x) {
