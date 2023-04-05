@@ -1,15 +1,15 @@
 package math;
 
-import java.util.function.DoubleBinaryOperator;
+import java.util.function.BiFunction;
 
 public class Series {
-    public static final DoubleBinaryOperator sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) / Series.getFactorial((int) (2 * n + 1));
-    public static final DoubleBinaryOperator lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
+    public static final BiFunction<Double, Integer, Double> sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) / Series.getFactorial(2 * n + 1);
+    public static final BiFunction<Double, Integer, Double> lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
 
-    public static double decomposeToSeries(double x, int n, DoubleBinaryOperator d) {
+    public static double decomposeToSeries(double x, int n, BiFunction<Double, Integer, Double> d) {
         double sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += d.applyAsDouble(x, i);
+            sum += d.apply(x, i);
         }
         return sum;
     }
