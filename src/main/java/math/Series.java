@@ -1,8 +1,7 @@
 package math;
 
 public class Series {
-
-    public double decomposeToSeries(double x, int n, Decomposable d) {
+    public static double decomposeToSeries(double x, int n, Decomposable d) {
         double sum = 0;
         for (int i = 0; i < n; i++) {
             sum += d.calculateStep(x, i);
