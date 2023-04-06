@@ -3,21 +3,31 @@ package math;
 import java.util.function.BiFunction;
 
 public class Series {
-    public static final BiFunction<Double, Integer, Double> sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) / Series.getFactorial(2 * n + 1);
+    private static final double accuracy = 0.000001;
+
+    public static final BiFunction<Double, Integer, Double> sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) * Series.getInverseFactorial(2 * n + 1);
     public static final BiFunction<Double, Integer, Double> lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
 
-    public static double decomposeToSeries(double x, int n, BiFunction<Double, Integer, Double> d) {
+    public static double decomposeToSeries(double x, BiFunction<Double, Integer, Double> d) {
+        if (Double.isNaN(x) || Double.isInfinite(x)) {
+            return Double.NaN;
+        }
         double sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += d.apply(x, i);
+        double prev = 0;
+        double curr = Double.MAX_VALUE;
+        int n = 0;
+        while (Math.abs(curr - prev) >= accuracy) {
+            prev = curr;
+            curr = d.apply(x, n++);
+            sum += curr;
         }
         return sum;
     }
 
-    public static long getFactorial(int number) {
-        long res = 1;
-        for (int i = 2; i <= number; i++) {
-            res *= i;
+    public static double getInverseFactorial(int n) {
+        double res = 1;
+        for (int i = 1; i <= n; ++i) {
+            res /= i;
         }
         return res;
     }

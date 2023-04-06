@@ -2,7 +2,7 @@ package math;
 
 public class Functions {
     public static double sin(double x) {
-        return Series.decomposeToSeries(x, 20, Series.sinSeries);
+        return Series.decomposeToSeries(x, Series.sinSeries);
     }
 
     public static double cos(double x) {
@@ -18,7 +18,7 @@ public class Functions {
     }
 
     public static double ln(double x) {
-        return Series.decomposeToSeries(x, 20, Series.lnSeries);
+        return Series.decomposeToSeries(x, Series.lnSeries);
     }
 
     public static double log3(double x) {
