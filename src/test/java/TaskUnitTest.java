@@ -30,12 +30,12 @@ class TaskUnitTest {
         Mockito.when(f.sin(0.)).thenReturn(0.);
         Mockito.when(f.cos(0.)).thenReturn(1.);
         Mockito.when(f.tan(0.)).thenReturn(0.);
-        Mockito.when(f.csc(0)).thenReturn(Double.NaN);
+        Mockito.when(f.csc(0)).thenReturn(Double.POSITIVE_INFINITY);
         t.setF(f);
 
         assertEquals(0.0539, t.trigonometricFunction(-Math.PI / 4), 0.0001);
         assertEquals(0.2799, t.trigonometricFunction(-Math.PI / 3), 0.0001);
-        assertEquals(Double.NaN, t.trigonometricFunction(0));
+        assertEquals(Double.POSITIVE_INFINITY, t.trigonometricFunction(0));
     }
 
     @Test
