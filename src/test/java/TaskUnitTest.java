@@ -63,10 +63,14 @@ class TaskUnitTest {
 
     @Test
     void functionTest() {
+        Mockito.when(t.trigonometricFunction(-0.0001)).thenReturn(9.9e15);
+        Mockito.when(t.trigonometricFunction(0.)).thenReturn(Double.POSITIVE_INFINITY);
         Mockito.when(t.logarithmicFunction(0.0001)).thenReturn(5.151);
         Mockito.when(t.logarithmicFunction(2591.3235)).thenReturn(-4.396);
 
-        assertEquals(5.151, t.logarithmicFunction(0.0001));
-        assertEquals(-4.396, t.logarithmicFunction(2591.3235));
+        assertEquals(9.9e15, t.function(-0.0001));
+        assertEquals(Double.POSITIVE_INFINITY, t.function(0));
+        assertEquals(5.151, t.function(0.0001));
+        assertEquals(-4.396, t.function(2591.3235));
     }
 }

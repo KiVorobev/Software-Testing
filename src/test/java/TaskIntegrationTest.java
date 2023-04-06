@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +27,9 @@ class TaskIntegrationTest {
 
     @Test
     void functionTest() {
-        assertEquals(5.151, t.logarithmicFunction(0.0001), 0.001);
-        assertEquals(-4.396, t.logarithmicFunction(2591.3235), 0.001);
+        assertEquals(9.997999966676664E15, t.function(-0.0001));
+        assertEquals(Double.POSITIVE_INFINITY, t.function(0));
+        assertEquals(5.151, t.function(0.0001), 0.001);
+        assertEquals(-4.396, t.function(2591.3235), 0.001);
     }
 }
