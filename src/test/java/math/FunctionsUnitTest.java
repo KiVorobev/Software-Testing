@@ -1,17 +1,17 @@
 package math;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FunctionsUnitTest {
-    Functions f;
-    Series s;
+    static Functions f;
+    static Series s;
 
-    @BeforeEach
-    void init() {
+    @BeforeAll
+    static void init() {
         f = Mockito.spy(new Functions());
         s = Mockito.spy(new Series());
     }

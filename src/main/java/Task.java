@@ -1,7 +1,7 @@
 import math.Functions;
 
 public class Task {
-    private final Functions f = new Functions();
+    private Functions f = new Functions();
 
     public double trigonometricFunction(double x) {
         return Math.pow(Math.pow(f.csc(x), 2) - f.cos(x) + (f.sin(x) * f.tan(x)) + Math.pow(f.sin(x), 3) + f.csc(x), 2);
@@ -16,5 +16,9 @@ public class Task {
             return trigonometricFunction(x);
         else
             return logarithmicFunction(x);
+    }
+
+    public void setF(Functions f) {
+        this.f = f;
     }
 }

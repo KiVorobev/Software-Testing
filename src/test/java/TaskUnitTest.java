@@ -17,7 +17,25 @@ class TaskUnitTest {
 
     @Test
     void trigonometricFunctionTest() {
-        assertEquals(4.49822, t.trigonometricFunction(5));
+        Mockito.when(f.sin(-Math.PI / 4)).thenReturn(-Math.sqrt(2)/2.);
+        Mockito.when(f.cos(-Math.PI / 4)).thenReturn(Math.sqrt(2)/2.);
+        Mockito.when(f.tan(-Math.PI / 4)).thenReturn(-1.);
+        Mockito.when(f.csc(-Math.PI / 4)).thenReturn(-Math.sqrt(2));
+
+        Mockito.when(f.sin(-Math.PI / 3)).thenReturn(-Math.sqrt(3)/2.);
+        Mockito.when(f.cos(-Math.PI / 3)).thenReturn(0.5);
+        Mockito.when(f.tan(-Math.PI / 3)).thenReturn(-Math.sqrt(3));
+        Mockito.when(f.csc(-Math.PI / 3)).thenReturn(-2./Math.sqrt(3));
+
+        Mockito.when(f.sin(0.)).thenReturn(0.);
+        Mockito.when(f.cos(0.)).thenReturn(1.);
+        Mockito.when(f.tan(0.)).thenReturn(0.);
+        Mockito.when(f.csc(0)).thenReturn(Double.NaN);
+        t.setF(f);
+
+        assertEquals(0.0539, t.trigonometricFunction(-Math.PI / 4), 0.0001);
+        assertEquals(0.2799, t.trigonometricFunction(-Math.PI / 3), 0.0001);
+        assertEquals(Double.NaN, t.trigonometricFunction(0));
     }
 
     @Test

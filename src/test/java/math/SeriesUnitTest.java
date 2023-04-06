@@ -1,18 +1,17 @@
 package math;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SeriesUnitTest {
-
-    Series s;
+    static Series s;
     double ACCURACY = 0.0001;
 
-    @BeforeEach
-    void init() {
+    @BeforeAll
+    static void init() {
         s = Mockito.spy(new Series());
     }
 
