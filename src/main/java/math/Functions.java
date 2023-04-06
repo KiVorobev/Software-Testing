@@ -6,7 +6,7 @@ public class Functions {
     }
 
     public static double cos(double x) {
-        return sin(x + Math.PI / 2);
+        return 1 - 2 * Math.pow(sin(x / 2), 2);
     }
 
     public static double tan(double x) {
