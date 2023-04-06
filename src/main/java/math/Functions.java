@@ -1,7 +1,7 @@
 package math;
 
 public class Functions {
-    private Series s;
+    private Series s = new Series();
 
     public double sin(double x) {
         return s.decomposeToSeries(x, s.sinSeries);
@@ -20,6 +20,9 @@ public class Functions {
     }
 
     public double ln(double x) {
+        if (x <= 0) {
+            return Double.NaN;
+        }
         return s.decomposeToSeries(x, s.lnSeries);
     }
 
