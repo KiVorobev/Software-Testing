@@ -1,35 +1,41 @@
 package math;
 
 public class Functions {
-    public static double sin(double x) {
-        return Series.decomposeToSeries(x, Series.sinSeries);
+    private Series s;
+
+    public double sin(double x) {
+        return s.decomposeToSeries(x, s.sinSeries);
     }
 
-    public static double cos(double x) {
+    public double cos(double x) {
         return 1 - 2 * Math.pow(sin(x / 2), 2);
     }
 
-    public static double tan(double x) {
+    public double tan(double x) {
         return sin(x) / cos(x);
     }
 
-    public static double csc(double x) {
+    public double csc(double x) {
         return 1 / sin(x);
     }
 
-    public static double ln(double x) {
-        return Series.decomposeToSeries(x, Series.lnSeries);
+    public double ln(double x) {
+        return s.decomposeToSeries(x, s.lnSeries);
     }
 
-    public static double log3(double x) {
+    public double log3(double x) {
         return ln(x) / ln(3);
     }
 
-    public static double log5(double x) {
+    public double log5(double x) {
         return ln(x) / ln(5);
     }
 
-    public static double log10(double x) {
+    public double log10(double x) {
         return ln(x) / ln(10);
+    }
+
+    public void setS(Series s) {
+        this.s = s;
     }
 }

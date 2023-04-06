@@ -3,12 +3,12 @@ package math;
 import java.util.function.BiFunction;
 
 public class Series {
-    private static final double accuracy = 0.000001;
+    private final double accuracy = 0.000001;
 
-    public static final BiFunction<Double, Integer, Double> sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) * Series.getInverseFactorial(2 * n + 1);
-    public static final BiFunction<Double, Integer, Double> lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
+    public final BiFunction<Double, Integer, Double> sinSeries = (x, n) -> (Math.pow(-1, n) * Math.pow(x, 2 * n + 1)) * getInverseFactorial(2 * n + 1);
+    public final BiFunction<Double, Integer, Double> lnSeries = (x, n) -> (Math.pow(-1, n - 1) * Math.pow(x, n) / n);
 
-    public static double decomposeToSeries(double x, BiFunction<Double, Integer, Double> d) {
+    public double decomposeToSeries(double x, BiFunction<Double, Integer, Double> d) {
         if (Double.isNaN(x) || Double.isInfinite(x)) {
             return Double.NaN;
         }
@@ -24,7 +24,7 @@ public class Series {
         return sum;
     }
 
-    public static double getInverseFactorial(int n) {
+    public double getInverseFactorial(int n) {
         double res = 1;
         for (int i = 1; i <= n; ++i) {
             res /= i;

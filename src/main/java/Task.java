@@ -1,12 +1,17 @@
+import math.Functions;
+import math.Series;
+
 import static math.Functions.*;
 
 public class Task {
+    private final Functions f = new Functions();
+
     public double trigonometricFunction(double x) {
-        return Math.pow(Math.pow(csc(x), 2) - cos(x) + (sin(x) * tan(x)) + Math.pow(sin(x), 3) + csc(x), 2);
+        return Math.pow(Math.pow(f.csc(x), 2) - f.cos(x) + (f.sin(x) * f.tan(x)) + Math.pow(f.sin(x), 3) + f.csc(x), 2);
     }
 
     public double logarithmicFunction(double x) {
-        return ((((log5(x) - ln(x)) / log5(x)) / log3(x)) * log5(x)) * (log3(x) + log10(x));
+        return ((((f.log5(x) - f.ln(x)) / f.log5(x)) / f.log3(x)) * f.log5(x)) * (f.log3(x) + f.log10(x));
     }
 
     public double function(double x) {
