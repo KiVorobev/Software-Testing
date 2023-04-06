@@ -17,15 +17,15 @@ class TaskUnitTest {
 
     @Test
     void trigonometricFunctionTest() {
-        Mockito.when(f.sin(-Math.PI / 4)).thenReturn(-Math.sqrt(2)/2.);
-        Mockito.when(f.cos(-Math.PI / 4)).thenReturn(Math.sqrt(2)/2.);
+        Mockito.when(f.sin(-Math.PI / 4)).thenReturn(-Math.sqrt(2) / 2.);
+        Mockito.when(f.cos(-Math.PI / 4)).thenReturn(Math.sqrt(2) / 2.);
         Mockito.when(f.tan(-Math.PI / 4)).thenReturn(-1.);
         Mockito.when(f.csc(-Math.PI / 4)).thenReturn(-Math.sqrt(2));
 
-        Mockito.when(f.sin(-Math.PI / 3)).thenReturn(-Math.sqrt(3)/2.);
+        Mockito.when(f.sin(-Math.PI / 3)).thenReturn(-Math.sqrt(3) / 2.);
         Mockito.when(f.cos(-Math.PI / 3)).thenReturn(0.5);
         Mockito.when(f.tan(-Math.PI / 3)).thenReturn(-Math.sqrt(3));
-        Mockito.when(f.csc(-Math.PI / 3)).thenReturn(-2./Math.sqrt(3));
+        Mockito.when(f.csc(-Math.PI / 3)).thenReturn(-2. / Math.sqrt(3));
 
         Mockito.when(f.sin(0.)).thenReturn(0.);
         Mockito.when(f.cos(0.)).thenReturn(1.);
@@ -54,6 +54,7 @@ class TaskUnitTest {
         Mockito.when(f.log5(31)).thenReturn(2.1336);
         Mockito.when(f.log10(31)).thenReturn(1.4913);
         Mockito.when(f.ln(31)).thenReturn(3.4339);
+        t.setF(f);
 
         assertEquals(-0.614, t.logarithmicFunction(3), 0.001);
         assertEquals(-1.229, t.logarithmicFunction(9), 0.001);
