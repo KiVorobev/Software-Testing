@@ -1,7 +1,4 @@
 import math.Functions;
-import math.Series;
-
-import static math.Functions.*;
 
 public class Task {
     private final Functions f = new Functions();
