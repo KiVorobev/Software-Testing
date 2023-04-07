@@ -36,8 +36,8 @@ public class Main {
         printCsv(f::log3, min, max, step, "log3.csv");
         printCsv(f::log5, min, max, step, "log5.csv");
         printCsv(f::log10, min, max, step, "log10.csv");
-        printCsv(t::trigonometricFunction, min, max, step, "trigonometric");
-        printCsv(t::logarithmicFunction, min, max, step, "logarithmic");
-        printCsv(t::function, min, max, step, "function");
+        printCsv(t::trigonometricFunction, min, max, step, "trigonometric.csv");
+        printCsv(t::logarithmicFunction, min, max, step, "logarithmic.csv");
+        printCsv(t::function, min, max, step, "function.csv");
     }
 }
