@@ -16,7 +16,7 @@ public class ChromeTest {
         driver = new ChromeDriver();
         driver.get("https://e.mail.ru/");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
     }
 
     @AfterEach
@@ -40,28 +40,35 @@ public class ChromeTest {
         driver.findElement(By.xpath("//span[text()='Поиск по почте']")).click();
         driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE\n");
         driver.findElement(By.xpath("//span[text()='По вашему запросу ничего не\u00a0найдено']"));
+        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
     }
 
     @Test
     @Order(3)
     void testSendMail() {
-        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
-        // TODO: Написать самому себе "TEST MESSAGE"
+        driver.findElement(By.xpath("//span[text()='Написать письмо']")).click();
+        driver.findElement(By.xpath("//div[contains(@class,'contactsContainer')]//input")).sendKeys("tpolab3@mail.ru\n");
+        driver.findElement(By.xpath("//input[@name='Subject']")).sendKeys("TEST LETTER");
+        driver.findElement(By.xpath("//div[contains(@class,'cke_editable')]")).sendKeys("TEST MESSAGE");
+        driver.findElement(By.xpath("//span[text()='Отправить']")).click();
+        driver.findElement(By.xpath("//span[@title='Закрыть']")).click();
     }
 
     @Test
     @Order(4)
     void testSearchWithResult() {
         driver.findElement(By.xpath("//span[text()='Поиск по почте']")).click();
-        driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("Mail.ru\n");
+        driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE\n");
         driver.findElement(By.xpath("//a[contains(@class,'llc_first')]"));
+        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
     }
 
     @Test
     @Order(5)
     void testDeleteMail() {
-        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
-        // TODO: удалить письмо себе
+        driver.findElement(By.xpath("//div[@title='Выделить']/ancestor::button")).click();
+        driver.findElement(By.xpath("//div[text()='Удалить']")).click();
+        driver.findElement(By.xpath("//div[text()='Очистить']")).click();
     }
 
     @Test
