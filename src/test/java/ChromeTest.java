@@ -1,9 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -43,7 +41,6 @@ public class ChromeTest {
         driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE\n");
         driver.findElement(By.xpath("//span[text()='По вашему запросу ничего не\u00a0найдено']"));
     }
-
 
     @Test
     @Order(3)
