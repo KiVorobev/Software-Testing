@@ -27,4 +27,29 @@ public class ChromeTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
         driver.findElement(By.xpath("//img[@alt='tpolab3@mail.ru']")).click();
     }
+
+    @Test
+    void testSearchNoResult() {
+
+    }
+
+    @Test
+    void testSendMail() {
+
+    }
+
+    @Test
+    void testSearchWithResult() {
+
+    }
+
+    @Test
+    void testDeleteMail() {
+
+    }
+
+    @Test
+    void testClearTrash() {
+
+    }
 }
