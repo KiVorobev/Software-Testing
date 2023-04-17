@@ -1,7 +1,9 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -58,17 +60,18 @@ public class ChromeTest {
         driver.findElement(By.xpath("//a[contains(@class,'llc_first')]"));
     }
 
-
-    /*
     @Test
+    @Order(5)
     void testDeleteMail() {
-
+        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
+        // TODO: удалить письмо себе
     }
 
     @Test
+    @Order(6)
     void testClearTrash() {
-
+        driver.findElement(By.xpath("//div[text()='Корзина']")).click();
+        driver.findElement(By.xpath("//a[text()='Очистить папку']")).click();
+        driver.findElement(By.xpath("//div[@class='layer__submit-button']")).click();
     }
-
-     */
 }
