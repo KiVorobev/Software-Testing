@@ -1,6 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -38,14 +39,14 @@ public class FireFoxTest {
     @Order(2)
     void testSearchNoResult() {
         driver.findElement(By.xpath("//span[text()='Поиск по почте']")).click();
-        driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE\n");
+        driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE" + Keys.ENTER);
         driver.findElement(By.xpath("//span[text()='По вашему запросу ничего не\u00a0найдено']"));
-        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
     }
 
     @Test
     @Order(3)
     void testSendMail() {
+        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
         driver.findElement(By.xpath("//span[text()='Написать письмо']")).click();
         driver.findElement(By.xpath("//div[contains(@class,'contactsContainer')]//input")).sendKeys("tpolab3@mail.ru\n");
         driver.findElement(By.xpath("//input[@name='Subject']")).sendKeys("TEST LETTER");
@@ -58,14 +59,14 @@ public class FireFoxTest {
     @Order(4)
     void testSearchWithResult() {
         driver.findElement(By.xpath("//span[text()='Поиск по почте']")).click();
-        driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE\n");
+        driver.findElement(By.xpath("//input[contains(@class,'mail-operands_dynamic-input__input')]")).sendKeys("TEST MESSAGE" + Keys.ENTER);
         driver.findElement(By.xpath("//a[contains(@class,'llc_first')]"));
-        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
     }
 
     @Test
     @Order(5)
     void testDeleteMail() {
+        driver.findElement(By.xpath("//div[text()='Сбросить поиск']")).click();
         driver.findElement(By.xpath("//div[@title='Выделить']")).click();
         driver.findElement(By.xpath("//div[text()='Удалить']")).click();
         driver.findElement(By.xpath("//div[text()='Очистить']")).click();
